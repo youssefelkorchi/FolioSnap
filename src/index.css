@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  .animate-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+  
+  .animate-fade-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease-out;
+  }
+  
+  .animate-fade-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease-out;
+  }
+  
+  .animate-fade-in-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+  }
+  
+  .animate-in {
+    opacity: 1 !important;
+    transform: translate(0) !important;
+  }
+
+  /* Hover scale utility */
+  .hover\:scale-102:hover {
+    transform: scale(1.02);
+  }
+
+  /* Fluid typography */
+  .text-fluid-xl {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+  }
+  
+  .text-fluid-2xl {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+  
+  .text-fluid-3xl {
+    font-size: clamp(1.875rem, 6vw, 3rem);
+  }
+  
+  .text-fluid-4xl {
+    font-size: clamp(2.25rem, 7vw, 3.75rem);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #707070;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4A4A4A;
+  }
+
+  /* Focus styles for accessibility */
+  .focus-visible\:ring-2:focus-visible {
+    outline: 2px solid #707070;
+    outline-offset: 2px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-left,
+  .animate-fade-in-right,
+  .animate-fade-in-up {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .animate-bounce {
+    animation: none;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-white\/95 {
+    background-color: white;
+  }
+  
+  .text-\[\#4A4A4A\] {
+    color: #2A2A2A;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    color: black !important;
+    background: white !important;
+  }
+}
